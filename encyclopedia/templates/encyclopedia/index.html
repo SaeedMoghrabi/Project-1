@@ -1,0 +1,22 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <!-- Page title -->
+    <h1>All Pages</h1> <!-- Fixed the closing </h1> tag -->
+
+    <!-- List of encyclopedia entries -->
+    <ul class="list-group">
+        {% for entry in entries %}
+            {% if entry %}
+                <li class="list-group-item">
+                    <!-- Link to individual entry -->
+                    <a href="{% url 'entry' title=entry %}">{{ entry }}</a>
+                </li>
+            {% endif %}
+        {% endfor %} {# This is the correct placement of the endfor tag. #}
+    </ul>
+{% endblock %}

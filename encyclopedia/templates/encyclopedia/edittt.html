@@ -1,0 +1,25 @@
+{% extends "encyclopedia/layout.html" %}
+
+{% block title %}
+    Encyclopedia
+{% endblock %}
+
+{% block body %}
+    <div class="edit-content">
+        <h1>EDIT Page</h1>
+
+        <form action="{% url 'save_edit' %}" method="POST">
+            {% csrf_token %}
+            <!-- Input field for the title with the current entry title as value -->
+            <input type="text" name="title" placeholder="Enter TITLE" value="{{ title }}">
+            <br />
+            <label for="content">Markdown Content:</label>
+            <br />
+            <!-- Textarea for editing the content -->
+            <textarea name="content">{{ content }}</textarea>
+            <br />
+            <!-- Submit button with Bootstrap styling -->
+            <input type="submit" value="Edit" class="btn btn-primary">
+        </form>
+    </div>
+{% endblock %}
